@@ -1,7 +1,6 @@
 import DropdownApps from "../commom/DropdownApps";
 import DropdownNotifications from "../commom/DropdownNotifications";
 import DropdownUserMenu from "../commom/DropdownUserMenu";
-import Search from "../commom/Search";
 
 function NavBar() {
     return (
@@ -50,7 +49,6 @@ function NavBar() {
                         />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-Com</span>
                     </a>
-                    <Search />
                 </div>
                 <div className="flex items-center lg:order-2">
                     <button

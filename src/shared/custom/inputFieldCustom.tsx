@@ -14,6 +14,7 @@ export default function InputFieldCustom({
     type,
     isRequired = false,
     placeholder,
+    autoComplete,
     customClass = "",
     icLeft = false,
     icRight = false,
@@ -27,6 +28,7 @@ export default function InputFieldCustom({
     type: string;
     isRequired?: boolean;
     placeholder: string;
+    autoComplete?: string;
     customClass?: string;
     icLeft?: boolean;
     icRight?: boolean;
@@ -67,8 +69,9 @@ export default function InputFieldCustom({
                     name={name}
                     type={isPasswordField && showPassword ? 'text' : type}
                     required={isRequired}
-                    className={fixedInputClass + customClass}
+                    className={`${fixedInputClass} ${customClass}`}
                     placeholder={placeholder}
+                    autoComplete={autoComplete}
                 />
                 {icRight && isPasswordField && (
                     <span

@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useUsers from "../../hooks/useUser";
 
 function DropdownUserMenu() {
     const { signOut } = useContext(AuthContext);
+    const { profile } = useUsers();
 
     const handleSignOut = () => { 
         Swal.fire({
@@ -11,15 +13,16 @@ function DropdownUserMenu() {
             text: "You will be logged out of this account.",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Ya, keluar"
+            confirmButtonText: "Ya, keluar",
+            confirmButtonColor: "#3085d6",
           }).then((result) => {
             if (result.isConfirmed) {
               Swal.fire({
                 title: "Sign Out",
                 text: "You have been logged out",
-                icon: "success"
+                icon: "success",
+                confirmButtonColor: "#3085d6",
               }).then(() => {
                 signOut();
               });
@@ -33,9 +36,11 @@ function DropdownUserMenu() {
             id="dropdown">
             <div className="py-3 px-4">
                 <span
-                    className="block text-sm font-semibold text-gray-900 dark:text-white">Neil Sims</span>
+                    className="block text-sm font-semibold text-gray-900 dark:text-white">{profile?.profile?.firstName} {profile?.profile?.lastName}</span>
                 <span
-                    className="block text-sm text-gray-900 truncate dark:text-white">name@flowbite.com</span>
+                    className="block text-sm font-semibold text-gray-900 dark:text-white">{profile?.username}</span>    
+                <span
+                    className="block text-sm text-gray-900 truncate dark:text-white">{profile?.email}</span>
             </div>
             <ul
                 className="py-1 text-gray-700 dark:text-gray-300"

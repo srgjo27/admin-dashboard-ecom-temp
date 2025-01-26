@@ -1,20 +1,19 @@
-import { 
-    Link, 
-    useNavigate 
+import {
+    Link,
+    useNavigate
 } from "react-router-dom";
 import { gfAsset } from "../../constants/gif_string";
-import InputFieldCustom from '../../components/custom/inputFieldCustom';
+import InputFieldCustom from '../../shared/custom/inputFieldCustom';
 import { useContext, useState } from "react";
 import { loginFields } from "../../constants/formFields";
 import { AuthContext } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const fields = loginFields;
-const fieldState: { [key: string]: string } = {};
-fields.forEach((field) => (fieldState[field.id] = ""));
 
 function LoginPage() {
-    const [loginState, setLoginState] = useState<{ [key: string]: string }>(fieldState);
+    const [loginState, setLoginState] = useState<{ [key: string]: string }>(
+        Object.fromEntries(loginFields.map((field) => [field.id, ""]))
+    );
     const [error, setError] = useState<string | null>(null);
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -36,15 +35,13 @@ function LoginPage() {
                 timer: 2000,
                 timerProgressBar: true,
                 didOpen: () => {
-                  Swal.showLoading();
+                    Swal.showLoading();
                 },
             }).then(() => {
-                navigate('/admin/dashboard');
-                window.location.reload();
+                navigate('/admin/dashboard', { replace: true });
             });
-        } catch (e) {
-            const error = e as Error;
-            setError(error.message);
+        } catch (error) {
+            setError((error as Error).message);
         }
     };
 
@@ -58,7 +55,7 @@ function LoginPage() {
                             className="h-14 w-14"
                             src={gfAsset.gfLogin} />
                     </div>
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login to your account</h2>
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login to E-Com</h2>
                     <p className="text-center text-sm text-gray-600 mt-5">
                         Don't have an account yet? &nbsp;
                         <Link to={'/signup'} className="font-medium text-primary-600 hover:text-primary-500">
@@ -77,21 +74,13 @@ function LoginPage() {
 
                     <form onSubmit={handleSubmit} className="mt-4 space-y-6">
                         <div className="-space-y-px">
-                            {fields.map((field) => (
+                            {loginFields.map((field) => (
                                 <InputFieldCustom
                                     key={field.id}
                                     handleChange={handleChange}
                                     value={loginState[field.id]}
-                                    labelText={field.labelText}
-                                    labelFor={field.labelFor}
-                                    id={field.id}
-                                    name={field.name}
-                                    type={field.type}
-                                    isRequired={field.isRequired}
-                                    placeholder={field.placeholder}
+                                    {...field}
                                     customClass="pl-10 pr-10 relative z-0"
-                                    icLeft={field.icLeft}
-                                    icRight={field.icRight}
                                 />
                             ))}
                         </div>

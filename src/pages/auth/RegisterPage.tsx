@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { gfAsset } from "../../constants/gif_string";
-import InputFieldCustom from '../../components/custom/inputFieldCustom';
+import InputFieldCustom from '../../shared/custom/inputFieldCustom';
 import { useContext, useState } from "react";
 import { registerFields } from "../../constants/formFields";
 import Swal from "sweetalert2";

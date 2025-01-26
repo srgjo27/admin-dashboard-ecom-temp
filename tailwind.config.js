@@ -47,6 +47,11 @@ export default {
       ]
     }
   },
-  plugins: [flowbite.plugin()],
+  plugins: [
+    require('flowbite/plugin')({
+      datatables: true,
+    }),
+    // flowbite.plugin()
+  ],
 }
 

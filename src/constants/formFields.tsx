@@ -22,7 +22,6 @@ const loginFields = [
         placeholder: '********',
         icLeft: true,
         icRight: true,
-
     },
 ]
 

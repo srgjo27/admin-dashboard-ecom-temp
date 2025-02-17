@@ -7,7 +7,7 @@ function DropdownUserMenu() {
     const { signOut } = useContext(AuthContext);
     const { profile } = useUsers();
 
-    const handleSignOut = () => { 
+    const handleSignOut = () => {
         Swal.fire({
             title: "Are you sure?",
             text: "You will be logged out of this account.",
@@ -16,19 +16,19 @@ function DropdownUserMenu() {
             cancelButtonColor: "#d33",
             confirmButtonText: "Ya, keluar",
             confirmButtonColor: "#3085d6",
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire({
-                title: "Sign Out",
-                text: "You have been logged out",
-                icon: "success",
-                confirmButtonColor: "#3085d6",
-              }).then(() => {
-                signOut();
-              });
+                Swal.fire({
+                    title: "Sign Out",
+                    text: "You have been logged out",
+                    icon: "success",
+                    confirmButtonColor: "#3085d6",
+                }).then(() => {
+                    signOut();
+                });
             }
-          });
-     };
+        });
+    };
 
     return (
         <div
@@ -38,7 +38,7 @@ function DropdownUserMenu() {
                 <span
                     className="block text-sm font-semibold text-gray-900 dark:text-white">{profile?.profile?.firstName} {profile?.profile?.lastName}</span>
                 <span
-                    className="block text-sm font-semibold text-gray-900 dark:text-white">{profile?.username}</span>    
+                    className="block text-sm font-semibold text-gray-900 dark:text-white">{profile?.username}</span>
                 <span
                     className="block text-sm text-gray-900 truncate dark:text-white">{profile?.email}</span>
             </div>

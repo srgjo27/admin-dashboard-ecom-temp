@@ -1,7 +1,7 @@
 interface resAuth {
-    error: string;
-    message: string;
     statusCode: number;
+    message: string;
+    error: string;
 }
 
 export default resAuth;

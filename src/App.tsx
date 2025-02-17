@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
 import { AuthProvider } from './hooks/useAuth'
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'

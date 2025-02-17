@@ -4,8 +4,8 @@ function Breadcrumb() {
     const location = useLocation();
 
     const paths = location.pathname
-    .split("/")
-    .filter((path) => path && path !== "admin")
+        .split("/")
+        .filter((path) => path && path !== "admin")
 
     return (
         <nav className="flex pb-4" aria-label="Breadcrumb">

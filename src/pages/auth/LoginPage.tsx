@@ -4,7 +4,10 @@ import {
 } from "react-router-dom";
 import { gfAsset } from "../../constants/gif_string";
 import InputFieldCustom from '../../shared/custom/inputFieldCustom';
-import { useContext, useState } from "react";
+import {
+    useContext,
+    useState,
+} from "react";
 import { loginFields } from "../../constants/formFields";
 import { AuthContext } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
